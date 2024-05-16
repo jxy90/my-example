@@ -1,1 +1,3 @@
-.idea
+#如果 .idea 文件夹之前已经被提交过，你需要先将它从 Git 的跟踪中移除，然后再提交 .gitignore 文件的更改。
+#git rm -r --cached .idea/
+.idea/
