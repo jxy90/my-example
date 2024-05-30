@@ -4,7 +4,7 @@
 - example 组件实例
   - cobra 
     - getting-started [开始学习](example%2Fcobra%2Fgetting-started%2Fhugo%2FREADME.md)
-- gee 造轮子的尝试与理解
+- wheel 造轮子的尝试与理解
 - test 简单功能验证
   - gin
     - XRequestID
