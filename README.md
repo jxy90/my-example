@@ -9,3 +9,6 @@
   - gin
     - XRequestID
       - 在gin中使用中间件补全X-Request-Id的验证
+
+## code style:
+* https://github.com/uber-go/guide?tab=readme-ov-file

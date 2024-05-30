@@ -18,6 +18,7 @@ func RequestIDMiddleware() gin.HandlerFunc {
 			val = uuid.New().String()
 			// 设置新的 X-Request-Id 到请求头中
 			c.Request.Header.Set(headerKey, val)
+			c.Set(headerKey, val)
 		}
 		// 将 X-Request-Id 设置到响应头中
 		c.Header(headerKey, val)
@@ -31,6 +32,9 @@ func PRequestIDMiddleware() gin.HandlerFunc {
 		headerKey := XRequestID
 		val := c.GetHeader(headerKey)
 		log.Println("traceId:" + val)
+		if v2, ok := c.Get(headerKey); ok {
+			log.Println("traceId2:" + v2.(string))
+		}
 	}
 }
 
