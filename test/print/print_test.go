@@ -1,0 +1,27 @@
+package print
+
+import (
+	"log"
+	"testing"
+)
+
+type C struct {
+	num int
+}
+
+func TestPrint(t *testing.T) {
+
+	var (
+		string1 = "123"
+		int1    = 123
+		array1  = [2]int{1, 2}
+		map1    = map[string]string{"a": "1"}
+		slice1  = []string{"1", "2"}
+		struct1 = struct{ a int }{a: 1}
+		struct2 = struct{ c C }{c: C{num: 1}}
+	)
+	output := []any{string1, int1, array1, map1, slice1, struct1, struct2}
+	log.Printf("%v, %v, %v, %v, %v, %v, %v", output...)
+	log.Printf("%+v, %+v, %+v, %+v, %+v, %+v, %+v", output...)
+	log.Printf("%#v, %#v, %#v, %#v, %#v, %#v, %#v", output...)
+}
