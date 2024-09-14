@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"errors"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -19,6 +21,7 @@ func main() {
 	// 启动一个 goroutine 持续运行
 
 	// 定义一个处理函数来返回 goroutine 的结果
+	r.GET("/", defaultH)
 	r.GET("/result", handler)
 	r.GET("/result2", handler2)
 
@@ -27,6 +30,25 @@ func main() {
 	if err != nil {
 		return
 	}
+}
+
+// 默认测试handler
+func defaultH(c *gin.Context) {
+	var err error
+	defer func() {
+		if err != nil {
+			fmt.Println("err defer")
+		} else {
+			fmt.Println("nil defer")
+		}
+	}()
+	err = errors.New("err New")
+	if err != nil {
+		c.JSON(http.StatusBadRequest, nil)
+		return
+	}
+
+	c.JSON(http.StatusOK, Result{Message: "return"})
 }
 
 // context结束goroutine不结束
